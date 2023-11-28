@@ -2,9 +2,13 @@
   "name": "float",
   "private": true,
   "scripts": {
-    "format": "dprint fmt"
+    "format": "dprint fmt",
+    "dev": "turbo run dev",
+    "start": "turbo run start",
+    "build": "turbo run build"
   },
   "devDependencies": {
-    "dprint": "^0.43.1"
+    "dprint": "^0.43.1",
+    "turbo": "^1.10.16"
   }
 }
