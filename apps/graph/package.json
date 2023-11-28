@@ -8,8 +8,9 @@
     "surface": "vite preview"
   },
   "devDependencies": {
+    "@trpc/client": "^10.44.1",
+    "chart.js": "^4.4.0",
     "typescript": "^5.3.2",
-    "vite": "^5.0.2",
-    "@trpc/client": "^10.44.1"
+    "vite": "^5.0.2"
   }
 }
