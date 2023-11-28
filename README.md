@@ -7,9 +7,9 @@ See [float specifications](https://20693798.fs1.hubspotusercontent-na1.net/hubfs
 ## Scripts
 
 - `surface`: all surface code
-    - `:dev`: enables dev mode
+  - `:dev`: enables dev mode
 - `water`: all water code
-    - `:dev`: enables dev mode
+  - `:dev`: enables dev mode
 - `water:mock`: mocks all water devices
 
 ## Specifications

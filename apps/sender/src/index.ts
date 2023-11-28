@@ -1,7 +1,9 @@
 import { createHTTPServer } from "@trpc/server/adapters/standalone";
-import { router } from "./trpc";
+import { publicProcedure, router } from "./trpc.js";
 
-const appRouter = router({});
+const appRouter = router({
+    ping: publicProcedure.query(() => `Pong! ${Math.random()}`),
+});
 
 export type AppRouter = typeof appRouter;
 

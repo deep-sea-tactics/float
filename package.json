@@ -3,9 +3,10 @@
   "private": true,
   "scripts": {
     "format": "dprint fmt",
-    "dev": "turbo run dev",
-    "start": "turbo run start",
-    "build": "turbo run build"
+    "surface": "turbo run surface",
+    "surface:dev": "turbo run surface:dev",
+    "water": "turbo run water",
+    "water:dev": "turbo run water:dev"
   },
   "devDependencies": {
     "dprint": "^0.43.1",

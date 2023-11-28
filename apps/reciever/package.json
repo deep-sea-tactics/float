@@ -2,12 +2,17 @@
   "name": "reciever",
   "type": "module",
   "private": true,
+  "files": ["dist/**", "src/**"],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "surface:dev": "tsx --watch src/index.ts",
-    "surface": "tsx index.ts"
+    "surface": "tsx src/index.ts",
+    "build": "tsc"
   },
   "devDependencies": {
-    "tsx": "^4.6.0"
+    "tsx": "^4.6.0",
+    "typescript": "^5.3.2"
   },
   "dependencies": {
     "@trpc/client": "^10.44.1",
