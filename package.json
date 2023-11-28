@@ -1,4 +1,10 @@
 {
   "name": "float",
-  "private": true
+  "private": true,
+  "scripts": {
+    "format": "dprint fmt"
+  },
+  "devDependencies": {
+    "dprint": "^0.43.1"
+  }
 }

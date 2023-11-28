@@ -1,9 +1,7 @@
-import { createHTTPServer } from '@trpc/server/adapters/standalone'
+import { createHTTPServer } from "@trpc/server/adapters/standalone";
 import { router } from "./trpc";
 
-const appRouter = router({
-
-});
+const appRouter = router({});
 
 export type AppRouter = typeof appRouter;
 
