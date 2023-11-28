@@ -1,0 +1,14 @@
+{
+  "name": "graph",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2",
+    "@trpc/client": "^10.44.1"
+  }
+}
