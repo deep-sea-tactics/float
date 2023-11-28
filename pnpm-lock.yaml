@@ -9,12 +9,23 @@ importers:
   .: {}
 
   apps/reciever:
+    dependencies:
+      '@trpc/client':
+        specifier: ^10.44.1
+        version: 10.44.1(@trpc/server@10.44.1)
+      sender:
+        specifier: workspace:*
+        version: link:../sender
     devDependencies:
       tsx:
         specifier: ^4.6.0
         version: 4.6.0
 
   apps/sender:
+    dependencies:
+      '@trpc/server':
+        specifier: ^10.44.1
+        version: 10.44.1
     devDependencies:
       tsx:
         specifier: ^4.6.0
@@ -219,6 +230,19 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@trpc/client@10.44.1(@trpc/server@10.44.1):
+    resolution: {integrity: sha512-vTWsykNcgz1LnwePVl2fKZnhvzP9N3GaaLYPkfGINo314ZOS0OBqe9x0ytB2LLUnRVTAAZ2WoONzARd8nHiqrA==}
+    peerDependencies:
+      '@trpc/server': 10.44.1
+    dependencies:
+      '@trpc/server': 10.44.1
+    dev: false
+
+  /@trpc/server@10.44.1:
+    resolution: {integrity: sha512-mF7B+K6LjuboX8I1RZgKE5GA/fJhsJ8tKGK2UBt3Bwik7hepEPb4NJgNr7vO6BK5IYwPdBLRLTctRw6XZx0sRg==}
+    engines: {node: '>=18.0.0'}
+    dev: false
 
   /esbuild@0.18.20:
     resolution: {integrity: sha512-ceqxoedUrcayh7Y7ZX6NdbbDzGROiyVBgC4PriJThBKSVPWnnFHZAkfI1lJT8QFkOwH4qOS2SJkS4wvpGl8BpA==}

@@ -1,5 +1,6 @@
 {
   "name": "sender",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "tsx --watch src/index.ts",
@@ -7,5 +8,8 @@
   },
   "devDependencies": {
     "tsx": "^4.6.0"
+  },
+  "dependencies": {
+    "@trpc/server": "^10.44.1"
   }
 }
