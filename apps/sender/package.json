@@ -3,8 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "tsx --watch src/index.ts",
-    "start": "tsx index.ts"
+    "water:dev": "tsx --watch src/index.ts",
+    "water": "tsx index.ts"
   },
   "devDependencies": {
     "tsx": "^4.6.0"

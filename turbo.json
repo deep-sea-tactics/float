@@ -2,14 +2,28 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "outputs": [".dist/**"]
+      "outputs": [".dist/**"],
+      "dependsOn": ["^build"]
     },
-    "dev": {
+    "water:dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dependsOn": ["^build"]
     },
-    "start": {
-      "persistent": true
+    "water": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["build"]
+    },
+    "surface": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["build"]
+    },
+    "surface:dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
     }
   }
 }

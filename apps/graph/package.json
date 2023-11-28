@@ -3,8 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build"
+    "surface:dev": "vite",
+    "build": "tsc && vite build",
+    "surface": "vite preview"
   },
   "devDependencies": {
     "typescript": "^5.3.2",
