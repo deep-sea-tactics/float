@@ -4,10 +4,21 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-devDependencies:
-  tsx:
-    specifier: ^4.6.0
-    version: 4.6.0
+importers:
+
+  .: {}
+
+  apps/reciever:
+    devDependencies:
+      tsx:
+        specifier: ^4.6.0
+        version: 4.6.0
+
+  apps/sender:
+    devDependencies:
+      tsx:
+        specifier: ^4.6.0
+        version: 4.6.0
 
 packages:
 

@@ -1,11 +1,4 @@
 {
   "name": "float",
-  "private": true,
-  "scripts": {
-    "dev": "tsx --watch src/index.ts",
-    "start": "tsx index.ts"
-  },
-  "devDependencies": {
-    "tsx": "^4.6.0"
-  }
+  "private": true
 }
