@@ -3,13 +3,16 @@ import { Chart } from "chart.js/auto";
 
 const canvas = document.querySelector("canvas")!;
 
+const data = [12, 19, 3, 5, 2, 3];
+
 new Chart(canvas, {
-  type: "bar",
+  type: "line",
   data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    labels: Array.from({ length: data.length }, (_, i) => i).map(String),
     datasets: [{
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
+      label: "Depth",
+      data,
+      tension: 0.2
     }],
-  }
+  },
 });
