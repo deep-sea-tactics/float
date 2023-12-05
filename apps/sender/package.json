@@ -6,8 +6,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "water:dev": "tsx --watch src/index.ts",
-    "water": "tsx src/index.ts",
+    "surface:dev": "tsx --watch src/index.ts",
+    "surface": "tsx src/index.ts",
     "build": "tsc"
   },
   "devDependencies": {
