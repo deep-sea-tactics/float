@@ -1,27 +1,10 @@
-import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
-import type { AppRouter } from "sender";
+import { mock } from "./mock.js";
 
 const isMock = process.env.MOCK === "true";
 
-const trpc = createTRPCProxyClient<AppRouter>({
-  links: [
-    httpBatchLink({
-      url: "http://localhost:3000",
-    }),
-  ],
-});
-
 if (isMock) {
-  const random = (min: number, y: number) => Math.random() * (y - min + 1) + min;
-
-  setInterval(() => {
-    trpc.add.mutate({
-      company: "TEST01",
-      timestamp: new Date().toISOString(),
-      pressure: random(1, 100),
-    })
-  }, 5000)
+  mock();
 } else {
-  console.error("Unimplemented!")
+  console.error("Unimplemented!");
   process.exit(1);
 }
