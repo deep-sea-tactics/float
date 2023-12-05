@@ -14,11 +14,13 @@
     "build": "tsc"
   },
   "devDependencies": {
+    "@types/events": "^3.0.3",
     "tsx": "^4.6.0",
     "typescript": "^5.3.2"
   },
   "dependencies": {
     "@trpc/server": "^10.44.1",
+    "events": "^3.3.0",
     "zod": "^3.22.4"
   }
 }
