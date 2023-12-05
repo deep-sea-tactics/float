@@ -1,8 +1,22 @@
-import "./app.css";
+import { createTRPCProxyClient, createWSClient, wsLink } from "@trpc/client";
 import { Chart } from "chart.js/auto";
+import { AppRouter } from "sender";
+import "./app.css";
 
 const canvas = document.querySelector("canvas")!;
 let count = 0;
+
+const wsClient = createWSClient({
+  url: `ws://localhost:3000`,
+});
+
+const trpc = createTRPCProxyClient<AppRouter>({
+  links: [
+    wsLink({
+      client: wsClient,
+    }),
+  ],
+});
 
 const chart = new Chart(canvas, {
   type: "line",
@@ -24,9 +38,12 @@ function addData(chart: Chart<"line", number[], string>, label: string, newData:
   chart.update();
 }
 
-window.addEventListener("keypress", (event) => {
-  if (event.key == "Enter") {
-    addData(chart, count.toString(), parseInt(prompt("Enter the Number")!));
+trpc.onAdd.subscribe(undefined, {
+  onData: (data) => {
+    addData(chart, data.timestamp, data.pressure);
     count++;
-  }
+  },
+  onError: (error) => {
+    console.error(error);
+  },
 });

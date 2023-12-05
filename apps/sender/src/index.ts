@@ -1,6 +1,7 @@
-import { createHTTPServer } from "@trpc/server/adapters/standalone";
+import { applyWSSHandler } from "@trpc/server/adapters/ws";
 import { observable } from "@trpc/server/observable";
 import { EventEmitter } from "events";
+import { WebSocketServer } from "ws";
 import { z } from "zod";
 import { publicProcedure, router } from "./trpc.js";
 
@@ -36,6 +37,21 @@ const appRouter = router({
 
 export type AppRouter = typeof appRouter;
 
-const server = createHTTPServer({ router: appRouter });
+const wss = new WebSocketServer({
+  port: 3000,
+});
 
-server.listen(3000);
+const handler = applyWSSHandler({ wss, router: appRouter });
+wss.on("connection", (ws) => {
+  console.log(`➕ Connection (${wss.clients.size})`);
+  ws.once("close", () => {
+    console.log(`➖ Connection (${wss.clients.size})`);
+  });
+});
+
+console.log("✅ WebSocket Server listening on ws://localhost:3000");
+
+process.on("SIGTERM", () => {
+  handler.broadcastReconnectNotification();
+  wss.close();
+});

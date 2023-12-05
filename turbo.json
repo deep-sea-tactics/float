@@ -10,6 +10,11 @@
       "persistent": true,
       "dependsOn": ["^build"]
     },
+    "water:mock": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
     "water": {
       "cache": false,
       "persistent": true,

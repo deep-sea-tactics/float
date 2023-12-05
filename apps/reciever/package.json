@@ -16,12 +16,14 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.3",
+    "@types/ws": "^8.5.10",
     "cross-env": "^7.0.3",
     "tsx": "^4.6.0",
     "typescript": "^5.3.2"
   },
   "dependencies": {
     "@trpc/client": "^10.44.1",
-    "sender": "workspace:*"
+    "sender": "workspace:*",
+    "ws": "^8.14.2"
   }
 }
