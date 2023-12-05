@@ -2,15 +2,21 @@
   "name": "reciever",
   "type": "module",
   "private": true,
-  "files": ["dist/**", "src/**"],
+  "files": [
+    "dist/**",
+    "src/**"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "water:mock": "cross-env MOCK=true tsx --watch src/index.ts",
     "water:dev": "tsx --watch src/index.ts",
     "water": "tsx src/index.ts",
     "build": "tsc"
   },
   "devDependencies": {
+    "@types/node": "^20.10.3",
+    "cross-env": "^7.0.3",
     "tsx": "^4.6.0",
     "typescript": "^5.3.2"
   },
