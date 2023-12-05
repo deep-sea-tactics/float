@@ -12,7 +12,7 @@ const trpc = createTRPCProxyClient<AppRouter>({
 });
 
 if (isMock) {
-  const random = (min: number, y: number) => Math.floor(Math.random() * (y - min + 1) + min);
+  const random = (min: number, y: number) => Math.random() * (y - min + 1) + min;
 
   setInterval(() => {
     trpc.add.mutate({
