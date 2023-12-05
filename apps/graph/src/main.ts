@@ -11,16 +11,16 @@ const chart = new Chart(canvas, {
     datasets: [{
       label: "Depth",
       data: [],
-      tension: 0.2
+      tension: 0.2,
     }],
   },
 });
 
 function addData(chart: Chart<"line", number[], string>, label: string, newData: number) {
   chart.data.labels?.push(label);
-  chart.data.datasets.forEach((dataset) => {
+  for (const dataset of chart.data.datasets) {
     dataset.data.push(newData);
-  });
+  }
   chart.update();
 }
 
@@ -29,4 +29,4 @@ window.addEventListener("keypress", (event) => {
     addData(chart, count.toString(), parseInt(prompt("Enter the Number")!));
     count++;
   }
-})
+});
