@@ -3,7 +3,8 @@ import type { AppRouter } from 'receiver';
 import WebSocket from 'ws';
 import { companyID } from './constants.js';
 
-const random = (min: number, y: number) => Math.random() * (y - min + 1) + min;
+const random = (min: number, max: number) => Math.random() * (max - min + 1) + min;
+let x = random(1, 1000000);
 
 export function mock() {
 	const wsClient = createWSClient({
@@ -23,7 +24,8 @@ export function mock() {
 		trpc.addData.mutate({
 			company: companyID,
 			timestamp: new Date().toISOString(),
-			pressure: random(1, 100)
+			pressure: Math.sin(2 * x) + Math.sin(Math.PI * x)
 		});
+		x += random(1, 5);
 	}, 5000);
 }
