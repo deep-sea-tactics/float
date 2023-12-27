@@ -1,16 +1,16 @@
 {
-  "compilerOptions": {
-    "lib": ["ESNext"],
-    "module": "NodeNext",
-    "target": "ESNext",
+	"compilerOptions": {
+		"lib": ["ESNext"],
+		"module": "NodeNext",
+		"target": "ESNext",
 
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "NodeNext",
-    "outDir": "dist",
-    "sourceMap": true,
-    "declaration": true
-  }
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "NodeNext",
+		"outDir": "dist",
+		"sourceMap": true,
+		"declaration": true
+	}
 }

@@ -1,10 +1,10 @@
-import { mock } from "./mock.js";
+import { mock } from './mock.js';
 
-const isMock = process.env.MOCK === "true";
+const isMock = process.env.MOCK === 'true';
 
 if (isMock) {
-  mock();
+	mock();
 } else {
-  console.error("Unimplemented!");
-  process.exit(1);
+	console.error('Unimplemented!');
+	process.exit(1);
 }

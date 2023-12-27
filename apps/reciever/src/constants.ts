@@ -1,1 +1,1 @@
-export const companyID = "TEST01";
+export const companyID = 'TEST01';
