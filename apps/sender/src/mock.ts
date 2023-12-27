@@ -1,5 +1,5 @@
 import { createTRPCProxyClient, createWSClient, wsLink } from '@trpc/client';
-import { AppRouter } from 'sender';
+import type { AppRouter } from 'receiver';
 import WebSocket from 'ws';
 import { companyID } from './constants.js';
 
@@ -20,7 +20,7 @@ export function mock() {
 	});
 
 	setInterval(() => {
-		trpc.add.mutate({
+		trpc.addData.mutate({
 			company: companyID,
 			timestamp: new Date().toISOString(),
 			pressure: random(1, 100)

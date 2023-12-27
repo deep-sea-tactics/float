@@ -1,11 +1,19 @@
 <script lang="ts">
 	import { createTRPCProxyClient, createWSClient, wsLink } from '@trpc/client';
 	import { Chart } from 'chart.js/auto';
-	import { AppRouter } from 'sender';
-	import './app.css';
+	import type { AppRouter } from 'receiver';
+	import { onMount } from 'svelte';
 
 	let canvas: HTMLCanvasElement;
 	let count = 0;
+
+    function addData(chart: Chart<'line', number[], string>, label: string, newData: number) {
+        chart.data.labels?.push(label);
+        for (const dataset of chart.data.datasets) {
+            dataset.data.push(newData);
+        }
+        chart.update();
+    }
 
     onMount(() => {
         const wsClient = createWSClient({
@@ -34,14 +42,6 @@
             }
         });
 
-        function addData(chart: Chart<'line', number[], string>, label: string, newData: number) {
-            chart.data.labels?.push(label);
-            for (const dataset of chart.data.datasets) {
-                dataset.data.push(newData);
-            }
-            chart.update();
-        }
-
         trpc.onAdd.subscribe(undefined, {
             onData: (data) => {
                 addData(chart, data.timestamp, data.pressure);
@@ -54,4 +54,22 @@
     });
 </script>
 
-<canvas bind:this={canvas} />
+<main>
+    <canvas bind:this={canvas} />
+</main>
+
+<style>
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+</style>

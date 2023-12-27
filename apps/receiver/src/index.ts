@@ -17,7 +17,7 @@ const eventEmitter = new EventEmitter();
 const data: Packet[] = [];
 
 const appRouter = router({
-	add: publicProcedure.input(packet).mutation(({ input }) => {
+	addData: publicProcedure.input(packet).mutation(({ input }) => {
 		data.push({ ...input });
 		eventEmitter.emit('add', input);
 		return data;
@@ -30,7 +30,7 @@ const appRouter = router({
 			return () => eventEmitter.off('add', onAdd);
 		});
 	}),
-	get: publicProcedure.query(() => data)
+	getData: publicProcedure.query(() => data)
 });
 
 export type AppRouter = typeof appRouter;
@@ -49,7 +49,10 @@ wss.on('connection', (ws) => {
 
 console.log('✅ WebSocket Server listening on ws://localhost:3000');
 
-process.on('SIGTERM', () => {
+function close() {
 	handler.broadcastReconnectNotification();
 	wss.close();
-});
+}
+
+process.on('SIGTERM', close);
+process.on('SIGINT', close);
