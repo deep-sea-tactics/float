@@ -4,50 +4,54 @@
 	import { AppRouter } from 'sender';
 	import './app.css';
 
-	const canvas = document.querySelector('canvas')!;
+	let canvas: HTMLCanvasElement;
 	let count = 0;
 
-	const wsClient = createWSClient({
-		url: `ws://localhost:3000`
-	});
+    onMount(() => {
+        const wsClient = createWSClient({
+            url: `ws://localhost:3000`
+        });
 
-	const trpc = createTRPCProxyClient<AppRouter>({
-		links: [
-			wsLink({
-				client: wsClient
-			})
-		]
-	});
+        const trpc = createTRPCProxyClient<AppRouter>({
+            links: [
+                wsLink({
+                    client: wsClient
+                })
+            ]
+        });
 
-	const chart = new Chart(canvas, {
-		type: 'line',
-		data: {
-			labels: [],
-			datasets: [
-				{
-					label: 'Depth',
-					data: [],
-					tension: 0.2
-				}
-			]
-		}
-	});
+        const chart = new Chart(canvas, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Depth',
+                        data: [],
+                        tension: 0.2
+                    }
+                ]
+            }
+        });
 
-	function addData(chart: Chart<'line', number[], string>, label: string, newData: number) {
-		chart.data.labels?.push(label);
-		for (const dataset of chart.data.datasets) {
-			dataset.data.push(newData);
-		}
-		chart.update();
-	}
+        function addData(chart: Chart<'line', number[], string>, label: string, newData: number) {
+            chart.data.labels?.push(label);
+            for (const dataset of chart.data.datasets) {
+                dataset.data.push(newData);
+            }
+            chart.update();
+        }
 
-	trpc.onAdd.subscribe(undefined, {
-		onData: (data) => {
-			addData(chart, data.timestamp, data.pressure);
-			count++;
-		},
-		onError: (error) => {
-			console.error(error);
-		}
-	});
+        trpc.onAdd.subscribe(undefined, {
+            onData: (data) => {
+                addData(chart, data.timestamp, data.pressure);
+                count++;
+            },
+            onError: (error) => {
+                console.error(error);
+            }
+        });
+    });
 </script>
+
+<canvas bind:this={canvas} />

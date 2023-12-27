@@ -56,9 +56,9 @@ importers:
       eslint-plugin-svelte:
         specifier: ^2.35.1
         version: 2.35.1(eslint@8.56.0)(svelte@4.2.8)
-      sender:
+      receiver:
         specifier: workspace:*
-        version: link:../sender
+        version: link:../receiver
       svelte:
         specifier: ^4.2.7
         version: 4.2.8
@@ -78,35 +78,7 @@ importers:
         specifier: ^1.0.0
         version: 1.1.0
 
-  apps/reciever:
-    dependencies:
-      '@trpc/client':
-        specifier: ^10.44.1
-        version: 10.44.1(@trpc/server@10.44.1)
-      sender:
-        specifier: workspace:*
-        version: link:../sender
-      ws:
-        specifier: ^8.14.2
-        version: 8.14.2
-    devDependencies:
-      '@types/node':
-        specifier: ^20.10.3
-        version: 20.10.3
-      '@types/ws':
-        specifier: ^8.5.10
-        version: 8.5.10
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-      tsx:
-        specifier: ^4.6.0
-        version: 4.6.0
-      typescript:
-        specifier: ^5.3.2
-        version: 5.3.2
-
-  apps/sender:
+  apps/receiver:
     dependencies:
       '@trpc/server':
         specifier: ^10.44.1
@@ -127,6 +99,34 @@ importers:
       '@types/ws':
         specifier: ^8.5.10
         version: 8.5.10
+      tsx:
+        specifier: ^4.6.0
+        version: 4.6.0
+      typescript:
+        specifier: ^5.3.2
+        version: 5.3.2
+
+  apps/sender:
+    dependencies:
+      '@trpc/client':
+        specifier: ^10.44.1
+        version: 10.44.1(@trpc/server@10.44.1)
+      receiver:
+        specifier: workspace:*
+        version: link:../receiver
+      ws:
+        specifier: ^8.14.2
+        version: 8.14.2
+    devDependencies:
+      '@types/node':
+        specifier: ^20.10.3
+        version: 20.10.3
+      '@types/ws':
+        specifier: ^8.5.10
+        version: 8.5.10
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       tsx:
         specifier: ^4.6.0
         version: 4.6.0

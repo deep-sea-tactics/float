@@ -3,9 +3,9 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"surface:dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview",
+		"surface": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -32,7 +32,7 @@
 		"vitest": "^1.0.0",
 		"@trpc/client": "^10.44.1",
 		"chart.js": "^4.4.1",
-		"sender": "workspace:*"
+		"receiver": "workspace:*"
 	},
 	"type": "module"
 }
