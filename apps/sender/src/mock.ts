@@ -20,7 +20,7 @@ export function mock() {
 		]
 	});
 
-	const seed = Math.random();
+	const seed = Math.random() * 10;
 	setInterval(() => {
 		trpc.addData.mutate({
 			company: companyID,
