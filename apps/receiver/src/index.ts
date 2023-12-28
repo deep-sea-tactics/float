@@ -7,7 +7,7 @@ import { publicProcedure, router } from './trpc.js';
 
 const packet = z.object({
 	company: z.string(),
-	timestamp: z.string(),
+	timestamp: z.number(),
 	pressure: z.number()
 });
 

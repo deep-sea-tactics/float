@@ -16,6 +16,7 @@
 	}
 
 	onMount(() => {
+		let startTS = Date.now();
 		const wsClient = createWSClient({
 			url: `ws://localhost:3000`
 		});
@@ -44,7 +45,18 @@
 
 		trpc.onAdd.subscribe(undefined, {
 			onData: (data) => {
-				addData(chart, data.timestamp, data.pressure);
+				const timestamp = data.timestamp - startTS;
+				// 5 mins, 5 seconds after running should be represented as 05:05
+				const minutes = Math.floor(timestamp / 1000 / 60);
+				const seconds = Math.floor((timestamp / 1000) % 60);
+
+				const timestampString = `${minutes.toString().padStart(2, '0')}:${seconds
+				.toString()
+				.padStart(2, '0')}`;
+
+				addData(chart, timestampString, data.pressure);
+
+				//addData(chart, data.timestamp, data.pressure);
 				count++;
 			},
 			onError: (error) => {

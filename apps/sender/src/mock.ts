@@ -23,7 +23,7 @@ export function mock() {
 	setInterval(() => {
 		trpc.addData.mutate({
 			company: companyID,
-			timestamp: new Date().toISOString(),
+			timestamp: Date.now(),
 			pressure: Math.sin(2 * x) + Math.sin(Math.PI * x)
 		});
 		x += random(1, 5);
