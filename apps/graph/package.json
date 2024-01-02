@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"surface:dev": "vite dev",
+		"surface:dev": "vite dev --host",
 		"build": "vite build",
 		"surface": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
