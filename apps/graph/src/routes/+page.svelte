@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { createTRPCProxyClient, createWSClient, wsLink } from '@trpc/client';
+	// TODO: use chart.js tree-shaking
 	import { Chart } from 'chart.js/auto';
 	import type { AppRouter } from 'receiver';
 	import { onMount } from 'svelte';
@@ -7,6 +8,7 @@
 
 	let canvas: HTMLCanvasElement;
 	let count = 0;
+	let startTS = Date.now();
 
 	function addData(chart: Chart<'line', number[], string>, label: string, newData: number) {
 		chart.data.labels?.push(label);
@@ -17,7 +19,7 @@
 	}
 
 	onMount(() => {
-		let startTS = Date.now();
+		startTS = Date.now();
 		const wsClient = createWSClient({
 			url: transform(3000, 'ws')
 		});
