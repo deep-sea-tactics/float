@@ -21,12 +21,17 @@ export function mock() {
 	});
 
 	const seed = Math.random() * 10;
-	setInterval(() => {
+
+	function send() {
 		trpc.addData.mutate({
 			company: companyID,
 			timestamp: Date.now(),
 			pressure: Math.sin(2 * x) + Math.sin(Math.PI * x)
 		});
 		x += seed;
-	}, 5000);
+
+		setTimeout(send, random(4000, 6000));
+	}
+
+	send();
 }
