@@ -3,6 +3,7 @@
 	import { Chart } from 'chart.js/auto';
 	import type { AppRouter } from 'receiver';
 	import { onMount } from 'svelte';
+	import { transform } from 'cloud-url-resolver';
 
 	let canvas: HTMLCanvasElement;
 	let count = 0;
@@ -18,7 +19,7 @@
 	onMount(() => {
 		let startTS = Date.now();
 		const wsClient = createWSClient({
-			url: `ws://localhost:3000`
+			url: transform(3000, 'ws')
 		});
 
 		const trpc = createTRPCProxyClient<AppRouter>({
@@ -51,8 +52,8 @@
 				const seconds = Math.floor((timestamp / 1000) % 60);
 
 				const timestampString = `${minutes.toString().padStart(2, '0')}:${seconds
-				.toString()
-				.padStart(2, '0')}`;
+					.toString()
+					.padStart(2, '0')}`;
 
 				addData(chart, timestampString, data.pressure);
 

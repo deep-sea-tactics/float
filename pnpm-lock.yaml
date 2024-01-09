@@ -19,6 +19,10 @@ importers:
         version: 1.10.16
 
   apps/graph:
+    dependencies:
+      cloud-url-resolver:
+        specifier: ^1.0.0
+        version: 1.0.0
     devDependencies:
       '@playwright/test':
         specifier: ^1.28.1
@@ -1244,6 +1248,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /cloud-url-resolver@1.0.0:
+    resolution: {integrity: sha512-JmomO/PiV9xpZ+Gp/zItrDZGUtDcM3yRGnVj/t3Jrro+eAeMrtUlMBEV2B3++dEQ0oLli+2aRPWmNeHR83wadA==}
+    dev: false
 
   /code-red@1.0.4:
     resolution: {integrity: sha512-7qJWqItLA8/VPVlKJlFXU+NBlo/qyfs39aJcuMT/2ere32ZqvF5OSxgdM5xOfJJ7O429gg2HM47y8v9P+9wrNw==}
