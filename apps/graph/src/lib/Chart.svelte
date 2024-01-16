@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { createTRPCProxyClient, createWSClient, wsLink } from '@trpc/client';
-	// TODO: use chart.js tree-shaking
+    // TODO: use chart.js tree-shaking
 	import { Chart } from 'chart.js/auto';
+    import 'chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm';
+    import dayjs from "dayjs"
 	import type { AppRouter } from 'receiver';
 	import { onMount } from 'svelte';
 	import { transform } from 'cloud-url-resolver';
@@ -43,21 +45,39 @@
 						tension: 0.2
 					}
 				]
-			}
+			},
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            tooltipFormat: 'mm:ss',
+                            unit: 'second',
+                            displayFormats: {
+                                second: 'm:ss'
+                            }
+                        },
+                        ticks: {
+                            source: 'data'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Depth'
+                        }
+                    }
+                }
+            }
 		});
 
 		trpc.onAdd.subscribe(undefined, {
 			onData: (data) => {
-				const timestamp = data.timestamp - startTS;
-				// 5 mins, 5 seconds after running should be represented as 05:05
-				const minutes = Math.floor(timestamp / 1000 / 60);
-				const seconds = Math.floor((timestamp / 1000) % 60);
-
-				const timestampString = `${minutes.toString().padStart(2, '0')}:${seconds
-					.toString()
-					.padStart(2, '0')}`;
-
-				addData(chart, timestampString, data.pressure);
+				addData(chart, dayjs(new Date(data.timestamp)).toISOString(), data.pressure);
 
 				//addData(chart, data.timestamp, data.pressure);
 				count++;

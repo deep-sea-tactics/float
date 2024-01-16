@@ -51,6 +51,12 @@ importers:
       chart.js:
         specifier: ^4.4.1
         version: 4.4.1
+      chartjs-adapter-dayjs-4:
+        specifier: ^1.0.4
+        version: 1.0.4(chart.js@4.4.1)(dayjs@1.11.10)
+      dayjs:
+        specifier: ^1.11.10
+        version: 1.11.10
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
@@ -1228,6 +1234,17 @@ packages:
       '@kurkle/color': 0.3.2
     dev: true
 
+  /chartjs-adapter-dayjs-4@1.0.4(chart.js@4.4.1)(dayjs@1.11.10):
+    resolution: {integrity: sha512-yy9BAYW4aNzPVrCWZetbILegTRb7HokhgospPoC3b5iZ5qdlqNmXts2KdSp6AqnjkPAp/YWyHDxLvIvwt5x81w==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      chart.js: '>=4.0.1'
+      dayjs: ^1.9.7
+    dependencies:
+      chart.js: 4.4.1
+      dayjs: 1.11.10
+    dev: true
+
   /check-error@1.0.3:
     resolution: {integrity: sha512-iKEoDYaRmd1mxM90a2OEfWhjsjPpYPuQ+lMYsoxB126+t8fw7ySEO48nmDg5COTjxDI65/Y2OWpeEHk3ZOe8zg==}
     dependencies:
@@ -1312,6 +1329,10 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: true
+
+  /dayjs@1.11.10:
+    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: true
 
   /debug@4.3.4:
