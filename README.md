@@ -10,10 +10,7 @@ Communicates with XBee - [https://github.com/Koenkk/zigbee-herdsman](Koenkk/zigb
 
 - `surface`: all surface code
   - `:dev`: enables dev mode
-- `water`: all water code
-  - `:dev`: enables dev mode
-- `water:mock`: mocks all water devices
 
 ## Specifications
 
-This hosts the repository for both the sender and the receiver, packages named appropiately.
+This hosts the repository for both the sender and the receiver, packages named appropriately.
