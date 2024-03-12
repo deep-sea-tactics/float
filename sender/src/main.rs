@@ -1,11 +1,10 @@
-
 #![no_std]
 #![no_main]
 
+use cortex_m::delay::Delay;
 use cortex_m_rt::entry;
 use defmt_rtt as _;
-use embedded_hal::digital::v2::OutputPin;
-use embedded_time::fixed_point::FixedPoint;
+use embedded_hal::digital::OutputPin;
 use panic_probe as _;
 use rp2040_hal as hal;
 
@@ -40,7 +39,7 @@ fn main() -> ! {
    .ok()
    .unwrap();
 
-   let mut delay = cortex_m::delay::Delay::new(core.SYST, clocks.system_clock.freq().integer());
+   let mut delay = Delay::new(core.SYST, clocks.system_clock.freq().to_Hz());
 
    let pins = hal::gpio::Pins::new(
        pac.IO_BANK0,
