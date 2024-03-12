@@ -10,7 +10,8 @@ Install the following rust dependencies:
 
 ```sh
 rustup target add thumbv6m-none-eabi
-cargo install cargo-binutils elf2uf2-rs flip-link
+cargo install --git https://github.com/LeoDog896/elf2uf2-rs.git --rev 75d072e
+cargo install cargo-binutils flip-link
 rustup component add llvm-tools-preview
 ```
 

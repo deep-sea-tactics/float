@@ -1,5 +1,5 @@
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
-runner = "elf2uf2-rs -d"
+runner = "elf2uf2 -d"
 
 rustflags = [
  "-C", "linker=flip-link",
