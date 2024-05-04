@@ -19,11 +19,9 @@ async function listenXbee() {
 		api_mode: 1
 	});
 
-	const serialport = new SerialPort({
-		path: "/dev/ttyAMA0",
+	const serialport = new SerialPort("/dev/ttyAMA0", {
+		parser: xbeeAPI.rawParser(),
 		baudRate: 9600,
-	}, {
-		parser: xbeeAPI.rawParser()
 	});
 
 	serialport.on("open", function () {
