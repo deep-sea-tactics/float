@@ -4,7 +4,7 @@
 	"scripts": {
 		"format": "prettier --write .",
 		"surface": "turbo run surface",
-		"surface:dev": "turbo run surface:dev",
+		"surface:mock": "turbo run surface:mock",
 		"water": "turbo run water",
 		"water:dev": "turbo run water:dev",
 		"water:mock": "turbo run water:mock"

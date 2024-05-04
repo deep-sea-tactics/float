@@ -10,7 +10,7 @@
 			"persistent": true,
 			"dependsOn": ["build"]
 		},
-		"surface:dev": {
+		"surface:mock": {
 			"cache": false,
 			"persistent": true,
 			"dependsOn": ["^build"]

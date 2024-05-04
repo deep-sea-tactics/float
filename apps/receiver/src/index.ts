@@ -11,6 +11,51 @@ const packet = z.object({
 	pressure: z.number()
 });
 
+async function listenXbee() {
+	const { SerialPort } = await import('serialport');
+	const xbee_api = await import('xbee-api');
+
+	const xbeeAPI = new xbee_api.XBeeAPI({
+		api_mode: 1
+	});
+
+	const serialport = new SerialPort("/dev/ttyAMA0", {
+		baudrate: 9600,
+		parser: xbeeAPI.rawParser()
+	});
+
+	serialport.on("open", function () {
+		var frame_obj = {
+			type: 0x10, 
+
+			id: 0x01, 
+
+			destination64: "0013A200407A25A7",
+			broadcastRadius: 0x00,
+			options: 0x00, 
+			data: "Hello world" 
+		};
+		
+		serialport.write(xbeeAPI.buildFrame(frame_obj));
+		console.log('Sent to serial port.');
+	});
+
+	serialport.on('data', function (data) {
+		console.log('data received: ' + data);
+	});
+
+	// All frames parsed by the XBee will be emitted here
+	xbeeAPI.on("frame_object", function (frame) {
+		console.log(">>", frame);
+	});
+}
+
+const isMock = process.env.MOCK === 'true';
+
+if (!isMock) {
+	listenXbee();
+}
+
 type Packet = z.infer<typeof packet>;
 
 const eventEmitter = new EventEmitter();
