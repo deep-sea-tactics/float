@@ -22,7 +22,9 @@ async function listenXbee() {
 	const serialport = new SerialPort({
 		path: "/dev/ttyAMA0",
 		baudRate: 9600,
-	}).pipe(xbeeAPI.rawParser());
+	}, {
+		parser: xbeeAPI.rawParser()
+	});
 
 	serialport.on("open", function () {
 		var frame_obj = {
