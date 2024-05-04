@@ -12,14 +12,14 @@ const packet = z.object({
 });
 
 async function listenXbee() {
-	const { SerialPort } = await import('serialport');
+	const { default: SerialPort } = await import('serialport');
 	const xbee_api = await import('xbee-api');
 
 	const xbeeAPI = new xbee_api.XBeeAPI({
 		api_mode: 1
 	});
 
-	const serialport = new SerialPort("/dev/ttyAMA0", {
+	const serialport = new SerialPort("/dev/serial0", {
 		parser: xbeeAPI.rawParser(),
 		baudRate: 9600,
 	});
