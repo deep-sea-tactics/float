@@ -19,13 +19,21 @@ async function listenXbee() {
 		baudRate: 9600,
 	});
 
-	serialport.on("open", function () {
-		serialport.write("hello!");
-		console.log('Sent to serial port.');
+	let interval: NodeJS.Timeout | null = null;
+
+	serialport.on("open", () => {
+		interval = setInterval(() => {
+			serialport.write("ping");
+		}, 1000);
 	});
 
-	serialport.on('data', function (data) {
+	serialport.on('data', data => {
 		console.log('data received: ' + data);
+
+		if (interval) {
+			clearInterval(interval);
+			interval = null;
+		}
 	});
 }
 
