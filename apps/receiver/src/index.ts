@@ -12,41 +12,20 @@ const packet = z.object({
 });
 
 async function listenXbee() {
-	const { default: SerialPort } = await import('serialport');
-	const xbee_api = await import('xbee-api');
+	const { SerialPort } = await import('serialport');
 
-	const xbeeAPI = new xbee_api.XBeeAPI({
-		api_mode: 1
-	});
-
-	const serialport = new SerialPort("/dev/serial0", {
-		parser: xbeeAPI.rawParser(),
+	const serialport = new SerialPort({
+		path: "/dev/serial0",
 		baudRate: 9600,
 	});
 
 	serialport.on("open", function () {
-		var frame_obj = {
-			type: 0x10, 
-
-			id: 0x01, 
-
-			destination64: "0013A200407A25A7",
-			broadcastRadius: 0x00,
-			options: 0x00, 
-			data: "Hello world" 
-		};
-		
-		serialport.write(xbeeAPI.buildFrame(frame_obj));
+		serialport.write("hello!");
 		console.log('Sent to serial port.');
 	});
 
 	serialport.on('data', function (data) {
 		console.log('data received: ' + data);
-	});
-
-	// All frames parsed by the XBee will be emitted here
-	xbeeAPI.on("frame_object", function (frame) {
-		console.log(">>", frame);
 	});
 }
 
