@@ -10,7 +10,6 @@
 
 	let canvas: HTMLCanvasElement;
 	let count = 0;
-	let startTS = Date.now();
 
 	function addData(chart: Chart<'line', number[], string>, label: string, newData: number) {
 		chart.data.labels?.push(label);
@@ -21,7 +20,6 @@
 	}
 
 	onMount(() => {
-		startTS = Date.now();
 		const wsClient = createWSClient({
 			url: transform(3000, 'ws')
 		});
@@ -78,8 +76,6 @@
 		trpc.onAdd.subscribe(undefined, {
 			onData: (data) => {
 				addData(chart, dayjs(new Date(data.timestamp)).toISOString(), data.pressure);
-
-				//addData(chart, data.timestamp, data.pressure);
 				count++;
 			},
 			onError: (error) => {

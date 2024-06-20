@@ -2,7 +2,8 @@
 	import Chart from "$lib/Chart.svelte";
 	import { pushState } from '$app/navigation';
 	import { page } from '$app/stores';
-	
+	import PhGearFill from '~icons/ph/gear-fill';
+
 	let chartSymbol = Symbol();
 
 	function showSettings() {
@@ -22,22 +23,26 @@
 		</button>
 	{/if}
 
-	<button class="settings" on:click={showSettings}>Settings</button>
+	<button class="settings" on:click={showSettings}><PhGearFill width="2rem" height="2rem" /></button>
 	
 	{#key chartSymbol}
 		<Chart />
 	{/key}
 </main>
 
-<style>
+<style lang="scss">
 	button.settings {
 		top: 0;
 		left: 0;
 		margin: 1rem;
 		position: fixed;
-		padding: 0.5rem 1rem;
-		border: 2px solid black;
+		background-color: transparent;
+		border: transparent;
 		z-index: 0;
+		transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+		&:hover {
+			transform: rotate(30deg);
+		}
 	}
 
 	div.container {
