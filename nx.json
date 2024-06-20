@@ -1,0 +1,42 @@
+{
+	"$schema": "./node_modules/nx/schemas/nx-schema.json",
+	"targetDefaults": {
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": ["{projectRoot}/.svelte-kit", "{projectRoot}/dist", "{projectRoot}/build"]
+		},
+		"lint": {
+			"cache": true,
+			"dependsOn": ["^build"]
+		},
+		"surface": {
+			"cache": false,
+			"dependsOn": ["^build"]
+		},
+		"surface:mock": {
+			"cache": false,
+			"dependsOn": ["^build"]
+		},
+		"water": {
+			"cache": false,
+			"dependsOn": ["^build"]
+		},
+		"water:dev": {
+			"cache": false,
+			"dependsOn": ["^build"]
+		},
+		"water:mock": {
+			"cache": false,
+			"dependsOn": ["^build"]
+		},
+		"test": {
+			"dependsOn": ["^build"],
+			"cache": true
+		},
+		"check": {
+			"cache": true,
+			"dependsOn": ["^build"]
+		}
+	},
+	"defaultBase": "main"
+}

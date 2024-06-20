@@ -3,15 +3,15 @@
 	"private": true,
 	"scripts": {
 		"format": "prettier --write .",
-		"surface": "turbo run surface",
-		"surface:mock": "turbo run surface:mock",
-		"water": "turbo run water",
-		"water:dev": "turbo run water:dev",
-		"water:mock": "turbo run water:mock"
+		"surface": "nx run-many -t surface --output-style stream",
+		"surface:mock": "nx run-many -t surface:mock --output-style stream",
+		"water": "nx run-many -t water --output-style stream",
+		"water:dev": "nx run-many -t water:dev --output-style stream",
+		"water:mock": "nx run-many -t water:mock --output-style stream"
 	},
 	"devDependencies": {
+		"nx": "^19.3.0",
 		"prettier": "^3.1.1",
-		"prettier-plugin-svelte": "^3.1.2",
-		"turbo": "^1.10.16"
+		"prettier-plugin-svelte": "^3.1.2"
 	}
 }
