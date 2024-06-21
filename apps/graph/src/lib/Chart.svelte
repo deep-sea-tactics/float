@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { createTRPCProxyClient, createWSClient, wsLink } from '@trpc/client';
-    // TODO: use chart.js tree-shaking
+	// TODO: use chart.js tree-shaking
 	import { Chart } from 'chart.js/auto';
-    import 'chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm';
-    import dayjs from "dayjs"
+	import 'chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm';
+	import dayjs from 'dayjs';
 	import type { AppRouter } from 'receiver';
 	import { onMount } from 'svelte';
 	import { transform } from 'cloud-url-resolver';
@@ -44,33 +44,33 @@
 					}
 				]
 			},
-            options: {
-                scales: {
-                    x: {
-                        type: 'time',
-                        time: {
-                            tooltipFormat: 'mm:ss',
-                            unit: 'second',
-                            displayFormats: {
-                                second: 'm:ss'
-                            }
-                        },
-                        ticks: {
-                            source: 'data'
-                        },
-                        title: {
-                            display: true,
-                            text: 'Time'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Depth'
-                        }
-                    }
-                }
-            }
+			options: {
+				scales: {
+					x: {
+						type: 'time',
+						time: {
+							tooltipFormat: 'mm:ss',
+							unit: 'second',
+							displayFormats: {
+								second: 'm:ss'
+							}
+						},
+						ticks: {
+							source: 'data'
+						},
+						title: {
+							display: true,
+							text: 'Time'
+						}
+					},
+					y: {
+						title: {
+							display: true,
+							text: 'Depth'
+						}
+					}
+				}
+			}
 		});
 
 		trpc.onAdd.subscribe(undefined, {

@@ -15,19 +15,19 @@ async function listenXbee() {
 	const { SerialPort } = await import('serialport');
 
 	const serialport = new SerialPort({
-		path: "/dev/serial0",
-		baudRate: 9600,
+		path: '/dev/serial0',
+		baudRate: 9600
 	});
 
 	let interval: NodeJS.Timeout | null = null;
 
-	serialport.on("open", () => {
+	serialport.on('open', () => {
 		interval = setInterval(() => {
-			serialport.write("ping");
+			serialport.write('ping');
 		}, 1000);
 	});
 
-	serialport.on('data', data => {
+	serialport.on('data', (data) => {
 		console.log('data received: ' + data);
 
 		if (interval) {

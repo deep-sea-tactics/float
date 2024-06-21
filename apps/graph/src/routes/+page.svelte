@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Chart from "$lib/Chart.svelte";
+	import Chart from '$lib/Chart.svelte';
 	import { pushState } from '$app/navigation';
 	import { page } from '$app/stores';
 	import PhGearFill from '~icons/ph/gear-fill';
@@ -9,7 +9,7 @@
 	function showSettings() {
 		pushState('', {
 			showingModal: true
-		})
+		});
 	}
 </script>
 
@@ -18,13 +18,14 @@
 		<button class="modal" on:click|self={() => history.back()}>
 			<div class="container">
 				<h1>Settings</h1>
-				<button on:click={() => chartSymbol = Symbol()}>Reset All Data</button>
+				<button on:click={() => (chartSymbol = Symbol())}>Reset All Data</button>
 			</div>
 		</button>
 	{/if}
 
-	<button class="settings" on:click={showSettings}><PhGearFill width="2rem" height="2rem" /></button>
-	
+	<button class="settings" on:click={showSettings}><PhGearFill width="2rem" height="2rem" /></button
+	>
+
 	{#key chartSymbol}
 		<Chart />
 	{/key}
